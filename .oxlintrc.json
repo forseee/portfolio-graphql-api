@@ -1,7 +1,12 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "rules": {
-    "typescript/no-explicit-any": "off",
+    "no-console": "error",
+    "typescript/ban-ts-comment": [
+      "error",
+      { "ts-ignore": "allow-with-description" }
+    ],
+    "typescript/no-explicit-any": "error",
     "typescript/no-floating-promises": "error"
   },
   "env": {

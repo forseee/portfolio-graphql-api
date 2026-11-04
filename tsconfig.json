@@ -18,6 +18,8 @@
     "incremental": true,
     "skipLibCheck": true,
     "strict": true,
+    // GraphQL models declare decorated fields without constructors; enabling
+    // this check would force a definite assignment assertion on every field.
     "strictPropertyInitialization": false
   }
 }
