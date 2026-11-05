@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:18-alpine
+    # Local development only: production credentials come from the platform.
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      # Postgres 18+ keeps data in a versioned subdirectory, so mount the parent.
+      - db_data:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d portfolio']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
